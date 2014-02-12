@@ -1,0 +1,16 @@
+doctype 5
+html
+	head
+		title= title
+		meta(charset='UTF-8')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		header
+			h1=	title
+		nav
+			span
+				a(title='主页',href='/')	主页
+				a(title='注册',href='/reg')	注册
+				a(title='登陆',href='login')	登陆
+		article
+			block    content
