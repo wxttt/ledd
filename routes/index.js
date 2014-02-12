@@ -8,11 +8,24 @@ var crypto = require('crypto'),
 
 module.exports = function(app) {
     app.get('/', function (req, res) {
-        res.render('index', { title: '主页' });
+        var success = req.flash('success').toString();
+        var error = req.flash('error').toString();
+
+        res.render('index', {
+            title: '主页',
+            user: req.session.user,
+            success: success,
+            error: error
+        });
     });
 
     app.get('/reg', function (req, res) {
-        res.render('reg', { title: '注册' });
+        res.render('reg', {
+            title: '注册',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        });
     });
 
     app.post('/reg', function (req, res) {
@@ -20,8 +33,6 @@ module.exports = function(app) {
             password = req.body.password,
             password_re = req.body['password-repeat'];
 
-        console.log('password', password)
-        console.log('password_re', password_re);
         //检验用户两次输入的密码是否一致
         if (password_re != password) {
             req.flash('error', '两次输入的密码不一致!');
@@ -36,7 +47,6 @@ module.exports = function(app) {
             email: req.body.email
         });
         //检查用户名是否已经存在
-        console.log('new user', newUser);
         User.get(newUser.name, function (err, user) {
             if (user) {
                 req.flash('error', '用户已存在!');
@@ -61,9 +71,30 @@ module.exports = function(app) {
     });
 
     app.post('/login', function (req, res) {
+        var md5 = crypto.createHash('md5'),
+            password = md5.update(req.body.password).digest('hex');
+
+        //检查用户是否存在
+        User.get(req.body.name, function(err, user){
+            if(!user){
+                req.flash('error', '用户名不存在');
+                return res.redirect('/login');//用户名不存在则跳转到登陆页
+            }
+
+            if(user.password != password){
+                req.flash('error', '密码错误');
+                return res.redirect('/login');//密码错误则跳转到登陆页
+            }
+
+            req.session.user = user;
+            req.flash('success', '登陆成功!');
+            res.redirect('/');//登陆成功后跳转到主页
+        })
     });
 
     app.get('/logout', function (req, res) {
-        console.log('log out');
+        req.session.user = null;
+        req.flash('success', '登出成功!');
+        res.redirect('/');//登出成功后跳转到主页
     });
 };
