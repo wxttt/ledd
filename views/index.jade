@@ -2,3 +2,13 @@ extends layout
 
 block	content
 	h1 这是首页
+	each post, index in posts
+		p
+			h2
+				a(href= '#') #{post.title}
+		p(class= 'info')
+			作者：
+			a(href= '#') #{post.name}
+			p 日期: #{post.time.minute}
+			p #{post.post}
+
