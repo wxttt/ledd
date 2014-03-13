@@ -97,7 +97,7 @@
 
             this.label_score.content = this.score;
             if(this.score == 22){
-                alert('达到21分了~亲爱的宝贝，生日快乐！')
+                alert('达到21分了~爱你呦，亲爱的宝贝，生日快乐！')
             }
         }
     };
