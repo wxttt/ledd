@@ -127,7 +127,7 @@ module.exports = function(app) {
 
     app.get('/sbbird', function (req, res) {
         res.render('birth', {
-            title: '生日礼物'
+            title: '傻逼鸟'
         });
     });
 
