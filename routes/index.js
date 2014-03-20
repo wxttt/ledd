@@ -125,7 +125,7 @@ module.exports = function(app) {
     });
 
 
-    app.get('/birth', function (req, res) {
+    app.get('/sbbird', function (req, res) {
         res.render('birth', {
             title: '生日礼物'
         });
