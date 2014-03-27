@@ -1,25 +1,11 @@
 var crypto = require('crypto'),
     User = require('../models/user.js'),
-    Post = require('../models/post.js');
+    Post = require('../models/post.js'),
+    Handlers = require('./handlers.js');
 
 module.exports = function(app) {
 
-    app.get('/', function (req, res) {
-        var success = req.flash('success').toString();
-        var error = req.flash('error').toString();
-        Post.get(null, function (err, posts) {
-            if (err) {
-                posts = [];
-            }
-            res.render('index', {
-                title: 'insistx',
-                user: req.session.user,
-                posts: posts,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
-        });
-    });
+    app.get('/', Handlers.index);
 
     app.get('/reg', checkNotLogin);
     app.get('/reg', function (req, res) {
@@ -126,7 +112,7 @@ module.exports = function(app) {
 
 
     app.get('/sbbird', function (req, res) {
-        res.render('birth', {
+        res.render('sbbird', {
             title: '傻逼鸟'
         });
     });
