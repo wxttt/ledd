@@ -93,6 +93,12 @@ Post.getAll = function(name, callback) {
 };
 
 Post.getOne = function(id, callback){
+
+    try{
+        var obj_id = BSON.ObjectID.createFromHexString(id);
+    }catch(err){
+        return callback(err);
+    }
     //打开数据库
     mongodb.open(function(err, db){
         if(err){
@@ -106,8 +112,6 @@ Post.getOne = function(id, callback){
                 return callback(err);
             }
 
-
-            var obj_id = BSON.ObjectID.createFromHexString(id);
             collection.findOne({
                 "_id": obj_id
             }, function(err, doc){

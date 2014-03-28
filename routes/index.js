@@ -120,6 +120,11 @@ module.exports = function(app) {
 
     app.get('/p/:id', Handlers.posts);
 
+
+    app.use(function (req, res) {
+        res.render("404");
+    });
+
     function checkLogin(req, res, next) {
         if (!req.session.user) {
             req.flash('error', '未登录!');
