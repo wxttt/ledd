@@ -1,11 +1,13 @@
 extends layout
 block content
 	form(method='post')
-		标题：
-		input(type='text', name='title')
-		br
-		br
-		textarea(name='post', rows='20', cols='100')
-		br
-		input(type='submit', value='发表')
+	h1 这里是文章页
+	p
+		h2
+			a(href= '#') #{post.title}
+	p(class= 'info')
+		| 作者：
+		a(href= '#') #{post.name}
+		p 日期: #{post.time.minute}
+		p !{post.post}
 

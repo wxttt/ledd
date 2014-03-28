@@ -5,9 +5,9 @@ block	content
 	each post, index in posts
 		p
 			h2
-				a(href= '#') #{post.title}
+				a(href= '/p/#{post._id}') #{post.title}
 		p(class= 'info')
-			作者：
+			| 作者：
 			a(href= '#') #{post.name}
 			p 日期: #{post.time.minute}
 			p !{post.post}

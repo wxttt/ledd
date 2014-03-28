@@ -5,7 +5,7 @@ var crypto = require('crypto'),
 function index(req, res) {
     var success = req.flash('success').toString();
     var error = req.flash('error').toString();
-    Post.get(null, function (err, posts) {
+    Post.getAll(null, function (err, posts) {
         if (err) {
             posts = [];
         }
@@ -19,4 +19,21 @@ function index(req, res) {
     });
 }
 
+function posts(req, res){
+    Post.getOne(req.params.id,function (err, post) {
+        if (err) {
+            req.flash('error', err);
+            return res.redirect('/');
+        }
+        res.render('single_post', {
+            title: req.params.title,
+            post: post,
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        });
+    });
+}
+
 exports.index = index;
+exports.posts = posts;

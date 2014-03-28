@@ -92,7 +92,7 @@ module.exports = function(app) {
     app.post('/post', checkLogin);
     app.post('/post', function (req, res) {
         var currentUser = req.session.user,
-            post = new Post(currentUser.name, req.body.title, req.body.post);
+            post = new Post(currentUser.name, req.body.title, req.body.post, currentUser._id);
         post.save(function (err) {
             if (err) {
                 req.flash('error', err);
@@ -116,6 +116,9 @@ module.exports = function(app) {
             title: '傻逼鸟'
         });
     });
+
+
+    app.get('/p/:id', Handlers.posts);
 
     function checkLogin(req, res, next) {
         if (!req.session.user) {
