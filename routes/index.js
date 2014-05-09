@@ -117,6 +117,13 @@ module.exports = function(app) {
         });
     });
 
+    //处理上传文件
+    app.get('/upload', checkLogin);
+    app.get('/upload', Handlers.uploadGet);
+
+    app.post('/upload', checkLogin);
+    app.post('/upload', Handlers.uploadPost);
+
 
     app.get('/p/:id', Handlers.posts);
 

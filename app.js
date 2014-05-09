@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
+app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname + '/public/images' }));
 app.use(express.session({
     secret: settings.cookieSecret,
     key: settings.db,//cookie name
@@ -35,7 +36,6 @@ app.use(express.session({
     })
 }));
 app.use(app.router);
-console.log(__dirname);
 app.use('/public/stylesheets', less(__dirname + '/less'));
 app.use(express.static(path.join(__dirname, 'public')));
 
