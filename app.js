@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes/index');
 var http = require('http');
 var path = require('path');
+var less = require('express-less');
 
 var app = express();
 var MongoStore = require('connect-mongo')(express);
@@ -34,6 +35,8 @@ app.use(express.session({
     })
 }));
 app.use(app.router);
+console.log(__dirname);
+app.use('/public/stylesheets', less(__dirname + '/less'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
