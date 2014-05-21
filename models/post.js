@@ -119,7 +119,6 @@ Post.getOne = function(id, callback){
                 if(err){
                     callback(err);
                 }
-                console.log(doc);
                 doc.post = markdown.toHTML(doc.post);
                 callback(null ,doc);
             })

@@ -117,6 +117,8 @@ module.exports = function(app) {
         });
     });
 
+
+
     //处理上传文件
     app.get('/upload', checkLogin);
     app.get('/upload', Handlers.uploadGet);
@@ -126,6 +128,8 @@ module.exports = function(app) {
 
 
     app.get('/p/:id', Handlers.posts);
+
+
 
 
     app.use(function (req, res) {

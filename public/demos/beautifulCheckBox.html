@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>很绚的一个checkbox Demo</title>
+    <style rel="stylesheet" type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: -webkit-linear-gradient(bottom, #afa4a1 0%, #eae6e0 70%, #fffeee 100%) no-repeat;
+        }
+
+        .expSwitch {
+            /* the orange/yellowish backgroud thingy */
+            background: -webkit-linear-gradient(0deg, #ba6326, #c0884d 60%, #eaaa32);
+            border-radius: 50px;
+            box-shadow: inset 0px 10px 10px rgba(0, 0, 0, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            height: 50px;
+            margin: 20px auto;
+            position: relative;
+            width: 200px;
+            z-index: 2;
+        }
+        .expSwitch:before {
+            /* the outline right next to the orange bg layer */
+            background: transparent;
+            border: 3px solid #EAE6E0;
+            border-radius: 55px;
+            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            content: '';
+            height: 62px;
+            left: 10px;
+            margin: -9px -19px;
+            position: absolute;
+            width: 212px;
+            z-index: 0;
+        }
+        .expSwitch:after {
+            /* the outermost layer */
+            background: none;
+            border: none;
+            border-radius: 55px;
+            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(255, 255, 255, 0.2);
+            content: '';
+            width: 220px;
+            height: 70px;
+            left: -20px;
+            margin: -10px 10px;
+            position: absolute;
+            right: 10px;
+            z-index: 0;
+        }
+        .expSwitch label {
+            background: -webkit-linear-gradient(bottom, #afa4a1 0%, #eae6e0 70%, #fffeee 100%);
+            border-radius: 50px;
+            box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            display: block;
+            height: 60px;
+            left: -5px;
+            position: absolute;
+            top: -5px;
+            transition: all .4s ease;
+            width: 120px;
+            z-index: 1;
+        }
+        .expSwitch label:after {
+            /* the inner circle */
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            position: relative;
+            left: 50px;
+            top: -5px;
+            margin-top: 20px;
+            margin-left: 20px;
+            content: "";
+            z-index: 2;
+            background: -webkit-linear-gradient(top, #afa4a1 0%, #eae6e0 70%, #fffeee 100%);
+        }
+        .expSwitch input[type=checkbox] {
+            visibility: hidden;
+        }
+        .expSwitch input[type=checkbox]:checked + label {
+            left: 85px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="expSwitch">
+        <input type="checkbox" id="c1"/>
+        <label for="c1"></label>
+    </div>
+</body>
+</html>
