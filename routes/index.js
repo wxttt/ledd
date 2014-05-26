@@ -129,8 +129,7 @@ module.exports = function(app) {
 
     app.get('/p/:id', Handlers.posts);
 
-
-
+    app.get('/tomatoClock', Handlers.tomatoClock);
 
     app.use(function (req, res) {
         res.render("404");

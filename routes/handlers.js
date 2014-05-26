@@ -63,7 +63,17 @@ function uploadPost(req, res){
     res.redirect('/upload');
 }
 
+function tomatoClock(req, res){
+    res.render('tomatoClock', {
+        title: '番茄闹钟'
+    });
+}
+
+
+
+
 exports.index = index;
 exports.posts = posts;
 exports.uploadGet = uploadGet;
 exports.uploadPost = uploadPost;
+exports.tomatoClock = tomatoClock;
