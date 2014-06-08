@@ -1,5 +1,12 @@
 extends layout2
 
 block content
-	h2	番茄闹钟
+	h2 番茄闹钟
+	section.m-tomato
+		form(method="post", action="/savetomato")
+			input(type="text",name="content")
+			button(type="submit") 添加
+		ol.m-tlst
+			li 第一条内容
+			li 第二条内容
 

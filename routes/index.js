@@ -1,6 +1,7 @@
 var crypto = require('crypto'),
     User = require('../models/user.js'),
     Post = require('../models/post.js'),
+    Tomato = require('../models/tomato.js'),
     Handlers = require('./handlers.js');
 
 module.exports = function(app) {
@@ -102,6 +103,23 @@ module.exports = function(app) {
             res.redirect('/');//发表成功跳转到主页
         });
     });
+
+    app.post('/savetomato', checkLogin);
+    app.post('/savetomato', function(req,res){
+        var currentUser = req.session.user,
+            tomato = new Tomato(req.body.content, currentUser._id);
+
+        tomato.save(function(err){
+            if(err){
+                req.flash('error', err);
+                return res.redirect('/');
+            }
+            req.flash('success', '创建clock成功');
+            res.redirect('/');
+        });
+    });
+
+
 
     app.get('/logout', checkLogin);
     app.get('/logout', function (req, res) {
