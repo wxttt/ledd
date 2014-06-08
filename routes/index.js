@@ -104,6 +104,21 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/savetomato', checkLogin);
+    app.get('/savetomato', function(req,res){
+        var date  = new Date();
+
+        Tomato.find(date, function(err){
+            if(err){
+                req.flash('error', err);
+                return res.redirect('/');
+            }
+            req.flash('success', '获取clock成功');
+            res.redirect('/');
+        })
+    });
+
+
     app.post('/savetomato', checkLogin);
     app.post('/savetomato', function(req,res){
         var currentUser = req.session.user,

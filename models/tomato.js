@@ -27,6 +27,7 @@ Tomato.prototype.save = function(callback){
     var tomato = {
         content: this.content,
         createTime: time,
+        day: time.day,
         startTime: 0,
         status:0,
         uid: this.uid
@@ -55,5 +56,38 @@ Tomato.prototype.save = function(callback){
             })
         });
     });
+};
+
+Tomato.find = function(date, callback){
+    //获取某天的番茄钟列表
+    //打开数据库
+    console.log('date is', date)
+    mongodb.open(function(err, db){
+        if(err){
+            mongodb.close();
+            return callback(err);
+        }
+
+        var query = {
+            day : date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+        };
+
+        db.collection('tomatos', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+
+            console.log(query);
+            collection.find(query).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);//失败！返回 err
+                }
+                console.log(docs);
+                callback(null, docs);//成功！以数组形式返回查询的结果
+            });
+        })
+    })
 };
 
