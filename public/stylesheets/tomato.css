@@ -1,0 +1,4 @@
+*{padding:0;margin:0;}
+html,body{height:100%}
+.m-calendar{height:70%;background-color:yellow;}
+.m-content{height:30%;background-color:blue;}
