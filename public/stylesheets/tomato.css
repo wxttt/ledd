@@ -1,6 +1,6 @@
 
 
-html, body, #carousel, #carousel ul, #carousel li {
+html, body, .m-calendar ul, .m-calendar li {
     min-height: 100%;
     height: 100%;
     padding: 0;
@@ -8,7 +8,11 @@ html, body, #carousel, #carousel ul, #carousel li {
     position: relative;
 }
 
-#carousel {
+.m-bar{height:10%;}
+.m-bar .baritem{display:inline-block;width:33.3%;height:100%;text-align:center;line-height:2em;}
+
+.m-calendar {
+    height:70%;
     background: silver;
     overflow: hidden;
     width: 100%;
@@ -17,14 +21,14 @@ html, body, #carousel, #carousel ul, #carousel li {
     -webkit-transform-style: preserve-3d;
 }
 
-#carousel ul.animate {
+.m-calendar ul.animate {
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
 }
 
-#carousel ul {
+.m-calendar ul {
     -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
     -moz-transform: translate3d(0%,0,0) scale3d(1,1,1);
     -ms-transform: translate3d(0%,0,0) scale3d(1,1,1);
@@ -35,20 +39,20 @@ html, body, #carousel, #carousel ul, #carousel li {
     -webkit-transform-style: preserve-3d;
 }
 
-#carousel ul {
+.m-calendar ul {
     -webkit-box-shadow: 0 0 20px rgba(0,0,0,.2);
     box-shadow: 0 0 20px rgba(0,0,0,.2);
     position: relative;
 }
 
-#carousel li {
+.m-calendar li {
     float: left;
     overflow: hidden;
     -webkit-transform-style: preserve-3d;
     -webkit-transform: translate3d(0,0,0);
 }
 
-#carousel li h2 {
+.m-calendar li h2 {
     color: #fff;
     font-size: 30px;
     text-align: center;
@@ -59,9 +63,15 @@ html, body, #carousel, #carousel ul, #carousel li {
     text-shadow: -1px -1px 0 rgba(0,0,0,.2);
 }
 
-#carousel li.pane1 { background: #42d692; }
-#carousel li.pane2 { background: #4986e7; }
-#carousel li.pane3 { background: #d06b64; }
-#carousel li.pane4 { background: #cd74e6; }
-#carousel li.pane5 { background: #9fe1e7; }
+.m-calendar li.pane1 { background: #42d692; }
+.m-calendar li.pane2 { background: #4986e7; }
+.m-calendar li.pane3 { background: #d06b64; }
+.m-calendar li.pane4 { background: #cd74e6; }
+.m-calendar li.pane5 { background: #9fe1e7; }
+
+.m-content{
+    height:20%;
+}
+
+.m-content h2{text-align:center;}
 

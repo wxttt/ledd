@@ -1,16 +1,10 @@
-
-
-/**
- * super simple carousel
- * animation between panes happens with css transitions
- */
 function Carousel(element)
 {
     var self = this;
     element = $(element);
 
-    var container = $(">ul", element);
-    var panes = $(">ul>li", element);
+    var container = $(".m-daylst", element);
+    var panes = $(".pane", element);
 
     var pane_width = 0;
     var pane_count = panes.length;
@@ -23,10 +17,14 @@ function Carousel(element)
      */
     this.init = function() {
         setPaneDimensions();
-
         $(window).on("load resize orientationchange", function() {
             setPaneDimensions();
-        })
+        });
+        $.handlebars({
+            templatePath: '/tpl',
+            templateExtension: 'hbs'
+        });
+        $('#content').render('calendar');
     };
 
 
@@ -127,6 +125,6 @@ function Carousel(element)
     new Hammer(element[0], { dragLockToAxis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
 }
 
-var carousel = new Carousel("#carousel");
+var carousel = new Carousel(".m-calendar");
 carousel.init();
 
