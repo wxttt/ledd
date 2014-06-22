@@ -158,7 +158,7 @@ function Carousel(element)
         swipeMaxTouches: 1,
         swipeMinTouches: 1,
         swipeVelocityX: 0.2,
-        swipeVelocityY: 0.2}).on("release dragleft dragright swipeleft swiperight tap swipedown", handleHammer);
+        swipeVelocityY: 0}).on("release dragleft dragright swipeleft swiperight tap swipedown", handleHammer);
 }
 
 
