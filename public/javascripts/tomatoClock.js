@@ -4,6 +4,7 @@ function Carousel(element)
     element = $(element);
 
     var container = $(".m-daylst", element);
+    var content = $("#content");
     var panes = $(".pane", element);
 
     var pane_width = 0;
@@ -24,7 +25,20 @@ function Carousel(element)
             templatePath: '/tpl',
             templateExtension: 'hbs'
         });
-        $('#content').render('calendar');
+
+
+        panes.each(function() {
+            $(this).render('calendar');
+        });
+
+        $(document.body).on('onRenderHbs', function(ev){
+            var tables = $('.m-calendar table');
+            var height = container.height();
+
+            tables.each(function(){
+                $(this).css({height:height,visibility:'visible'});
+            });
+        })
     };
 
 
@@ -119,10 +133,101 @@ function Carousel(element)
                     self.showPane(current_pane, true);
                 }
                 break;
+            case 'tap':
+                var el = $(ev.srcElement);
+                var yIndex = $(ev.srcElement).closest('tr').data('y');
+                var table = $(ev.srcElement).closest('table');
+                if(yIndex != undefined){
+                    element.css('height','14%');
+                    content.css('height','76%');
+                    table.addClass('animate');
+                    table.css('marginTop',-(table.height()/6*yIndex)+'px');
+                }
+                break;
+            case 'swipedown':
+                element.css('height', '70%');
+                content.css('height','20%');
+                $('table').css('marginTop','0px');
+                break;
         }
     }
 
-    new Hammer(element[0], { dragLockToAxis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
+    new Hammer(document.body, {
+        dragLockToAxis: true,
+        swipe: true,
+        swipeMaxTouches: 1,
+        swipeMinTouches: 1,
+        swipeVelocityX: 0.2,
+        swipeVelocityY: 0.2}).on("release dragleft dragright swipeleft swiperight tap swipedown", handleHammer);
+}
+
+
+function getMockCalanderData(){
+    var _data = [
+        [
+            {date:1,hasData:true},
+            {date:2,hasData:true},
+            {date:3,hasData:true},
+            {date:4,hasData:true},
+            {date:5,hasData:true},
+            {date:6,hasData:true},
+            {date:7,hasData:false},
+            {date:8,hasData:true},
+            {date:9,hasData:true},
+            {date:10,hasData:true},
+            {date:11,hasData:true},
+            {date:12,hasData:true},
+            {date:13,hasData:true},
+            {date:14,hasData:true},
+            {date:15,hasData:true},
+            {date:16,hasData:true},
+            {date:17,hasData:true},
+            {date:18,hasData:true},
+            {date:19,hasData:false},
+            {date:20,hasData:true},
+            {date:22,hasData:true},
+            {date:23,hasData:true},
+            {date:24,hasData:true},
+            {date:25,hasData:true},
+            {date:26,hasData:true},
+            {date:27,hasData:true},
+            {date:28,hasData:true},
+            {date:29,hasData:true},
+            {date:30,hasData:true}
+        ],
+        [
+            {date:1,hasData:true},
+            {date:2,hasData:true},
+            {date:3,hasData:true},
+            {date:4,hasData:true},
+            {date:5,hasData:true},
+            {date:6,hasData:true},
+            {date:7,hasData:false},
+            {date:8,hasData:true},
+            {date:9,hasData:true},
+            {date:10,hasData:true},
+            {date:11,hasData:true},
+            {date:12,hasData:true},
+            {date:13,hasData:true},
+            {date:14,hasData:true},
+            {date:15,hasData:false},
+            {date:16,hasData:true},
+            {date:17,hasData:true},
+            {date:18,hasData:true},
+            {date:19,hasData:false},
+            {date:20,hasData:true},
+            {date:22,hasData:true},
+            {date:23,hasData:true},
+            {date:24,hasData:true},
+            {date:25,hasData:true},
+            {date:26,hasData:true},
+            {date:27,hasData:true},
+            {date:28,hasData:true},
+            {date:29,hasData:true},
+            {date:30,hasData:true},
+            {date:31,hasData:true}
+        ]
+    ]
 }
 
 var carousel = new Carousel(".m-calendar");

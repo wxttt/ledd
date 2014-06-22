@@ -79,6 +79,7 @@
 			$.get(url, function (template) {
 				cache[url] = Handlebars.compile(template);
 				$this.html(cache[url](data)).trigger('render.handlebars', [templateName, data]);
+                $(document.body).trigger('onRenderHbs');
 			}, 'text');
 		}
 		return this;
