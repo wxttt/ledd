@@ -65,7 +65,7 @@ function uploadPost(req, res){
 
 function tomatoClock(req, res){
     res.render('tomatoClock', {
-        title: '番茄闹钟'
+        title: '日历demo垃圾版'
     });
 }
 
