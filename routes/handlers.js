@@ -63,10 +63,11 @@ function uploadPost(req, res){
     res.redirect('/upload');
 }
 
-function tomatoClock(req, res){
-    res.render('tomatoClock', {
-        title: '日历demo垃圾版'
-    });
+
+function slideDemo(req, res){
+    res.render('slideDemo', {
+        title: 'slideDemo'
+    })
 }
 
 
@@ -76,4 +77,4 @@ exports.index = index;
 exports.posts = posts;
 exports.uploadGet = uploadGet;
 exports.uploadPost = uploadPost;
-exports.tomatoClock = tomatoClock;
+exports.slideDemo = slideDemo;

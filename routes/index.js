@@ -162,7 +162,8 @@ module.exports = function(app) {
 
     app.get('/p/:id', Handlers.posts);
 
-    app.get('/tomatoClock', Handlers.tomatoClock);
+    //滑动slide DEMO
+    app.get('/slidedemo', Handlers.slideDemo);
 
     app.use(function (req, res) {
         res.render("404");

@@ -1,0 +1,44 @@
+extends layout2
+block style
+	link(rel='stylesheet',href='/stylesheets/onepage-scroll.css')
+	link(rel='stylesheet',href='/stylesheets/animate.min.css')
+
+block content
+	div.wrapper
+		div.main
+			section.page1
+				div.page_container
+					h3.title.translate-pre 第一页的标题
+					img.page-img.translate-pre(alt='图片',src='/images/saber.jpg')
+			section.page2
+				div.page_container
+					h3.title.translate-pre 第二页的标题
+					img.page-img.translate-pre(alt='图片',src='/images/saber.jpg')
+			section.page3
+				div.page_container
+					h3.title.translate-pre 第三页的标题
+					img.page-img.translate-pre(alt='图片',src='/images/saber.jpg')
+block bodyscript
+	script(src='/javascripts/zepto.js')
+	script(src='/javascripts/slide/fx.js')
+	script(src='/javascripts/slide/zepto.onepagescroll.js')
+	script(type='text/javascript').
+		Zepto(function($){
+			var _container;
+			_container = $('.page_container')[0];
+			$('.page-img', _container).addClass('animated bounceInRight');
+			$('.title', _container).addClass('animated bounceInLeft');
+
+			$(".main").onePageScroll({
+				loop: false,
+				animationTime: 800,
+				afterMove: function(index, next_el){
+					if(index!=1)
+						_container = $('.page_container')[index-1]
+						$('.title', _container).addClass('animated bounceInLeft');
+						$('.page-img', _container).addClass('animated bounceInRight');
+				}
+			});
+
+		})
+
