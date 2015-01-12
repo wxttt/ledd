@@ -330,10 +330,10 @@ header {
     z-index: 1;
 }
 
-.main section.page1 {
+.main section.page {
     background:rgb(230, 217, 200);
 }
-.main section.page1 h1 {
+.main section.page h1 {
     float: none;
     max-width: 435px;
     width: 100%;
@@ -344,7 +344,7 @@ header {
     font-size: 44px;
     color: black;
 }
-.main section.page1 h2 {
+.main section.page h2 {
     font-size: 18px;
     display: block;
     color: rgba(0,0,0,0.85);
@@ -363,60 +363,10 @@ header {
 .main section .page_container .btns a{
     text-align: center;
 }
-.main section.page2 {
-    background: #555557 url(back-phone.png) no-repeat center -150px ;
-}
-.main section.page2 > img {
-    position: absolute;
-    top: -300px;
-    left: 50%;
-    margin-left: -1095px;
-}
-.main section.page2 .page_container {
-    margin-top: 240px;
-    overflow: hidden;
-}
-.main section.page2 h1 {
-    text-align: center;
-    padding: 0;
-    margin-bottom: 15px;
-    font-size: 50px;
-    letter-spacing: -1px;
-    color: white;
-}
-.main section.page2 h2 {
-    color: rgba(255,255,255,0.85);
-    text-align: center;
-    line-height: 160%;
-    font-weight: 100;
-}
+
 .viewing-page-2 .back{
     background: rgba(0, 0, 0, 0.25);
     color: #FFF;
-}
-.main section.page3 {
-    background:url(tilted-phone.png) no-repeat 156px -150px ;
-}
-.main section.page3 .page_container {
-    overflow: hidden;
-    max-width: 500px;
-    width: 100%;
-    right: -285px;
-}
-.main section.page3 h1 {
-    text-align: left;
-    padding: 0;
-    margin-bottom: 0;
-    font-size: 70px;
-    letter-spacing: -1px;
-    color: black;
-}
-.main section.page3 h2 {
-    color: rgba(0,0,0,0.85);
-    text-align: left;
-    line-height: 160%;
-    font-weight: 100;
-    font-size: 21px;
 }
 body.disabled-onepage-scroll .onepage-wrapper  section {
     min-height: 100%;
@@ -441,7 +391,7 @@ body.disabled-onepage-scroll section .page_container h2, body.disabled-onepage-s
     width: 100%;
 }
 
-body.disabled-onepage-scroll .main section.page1 > img {
+body.disabled-onepage-scroll .main section.page > img {
     position: absolute;
     width: 80%;
     left: 10%;
@@ -459,13 +409,7 @@ body.disabled-onepage-scroll code {
     overflow: hidden;
 }
 
-body.disabled-onepage-scroll .main section.page3 .page_container {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    right: 0;
-}
-.main section.page1 h1 strong {
+.main section.page h1 strong {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 16px;
@@ -510,7 +454,7 @@ body .socials {
     .rehide {
         display: none !important;
     }
-    .main section.page1 h2 {
+    .main section.page h2 {
         font-size: 15px;
         padding: 0 25px;
         box-sizing: border-box;
@@ -529,30 +473,9 @@ body .socials {
     .txt-btn {
         margin: 12px 25px 12px;
     }
-    .main section.page2 .page_container {
-        margin-top: 50px;
-        overflow: hidden;
-        padding: 0 25px;
-    }
-    .main section.page2 h1, .main section.page3 h1 {
-        font-size: 25px;
-        text-align: center;
-        margin-bottom: 25px;
-    }
-    .main section.page2 h2, .main section.page3 h2 {
-        font-size: 18px;
-        text-align: center;
-    }
     code {
         margin: 10px auto;
         width: 100%;
-    }
-    .main section.page3 .page_container {
-        right: 0;
-        padding: 0 25px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
     }
 }
 
@@ -569,6 +492,13 @@ body .socials {
     transform: translate3d(0, -3000px, 0);
 }
 
-.title{
+/*.flip-pre{opacity:0;}*/
 
+.title{
+    font-size: 32px;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s  linear;
 }
