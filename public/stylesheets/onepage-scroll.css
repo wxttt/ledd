@@ -502,3 +502,24 @@ body .socials {
     -webkit-text-fill-color: transparent;
     -webkit-animation: hue 60s  linear;
 }
+
+.main section.page.page1{
+    background-image:url('http://zoneke-img.b0.upaiyun.com/51d1c4ffc1c77d4854bfc28138070bf5.jpg');
+    background-size:cover;
+}
+
+.main section.page.page2{
+    background-image:url('http://zoneke-img.b0.upaiyun.com/5a469496994b12a51021c29b83213fe1.jpg');
+    background-size:cover;
+}
+
+.main section.page.page3{
+    background-image:url('http://zoneke-img.b0.upaiyun.com/fc3c2638b6244f9c569118b966860753.jpg');
+    background-size:cover;
+}
+
+.loading{
+    position:absolute;z-index:100;top:0;left:0;right:0;bottom:0;background-color:rgb(230, 217, 200);
+}
+
+.f-dn{display:none;}

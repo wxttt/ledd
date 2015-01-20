@@ -5,19 +5,21 @@ block style
 
 block content
 	div.wrapper
+		div.loading
+			p 载入中。。。。。
 		div.main
 			section.page
 				div.page_container
 					h3.title(data-action='animated bounceIn') 弹入动画系列
-			section.page
+			section.page.page1
 				div.page_container
 					h3.title.translate-pre(data-action='animated bounceInRight') 从右侧弹入动画
 					h3.title.translate-pre(data-action="animated bounceInLeft") 从左侧弹入动画
-			section.page
+			section.page.page2
 				div.page_container
 					h3.title.translate-pre(data-action='animated bounceInUp') 从上侧弹入动画
 					h3.title.translate-pre(data-action="animated bounceInDown") 从下侧弹入动画
-			section.page
+			section.page.page3
 				div.page_container
 					h3.title.flip-pre(data-action='animated flip') 空翻动画系列
 			section.page
@@ -35,25 +37,53 @@ block bodyscript
 		Zepto(function($){
 			var _containers = $('.page_container');
 			var _container, _els;
+			var _loading = $('.loading');
+			var _index = 0;
+			var _imgLst = [
+				'http://zoneke-img.b0.upaiyun.com/51d1c4ffc1c77d4854bfc28138070bf5.jpg',
+				'http://zoneke-img.b0.upaiyun.com/5a469496994b12a51021c29b83213fe1.jpg',
+				'http://zoneke-img.b0.upaiyun.com/fc3c2638b6244f9c569118b966860753.jpg'
+			]
+
+			function _preload(index){
+				var _img = new Image();
+
+				_img.src = _imgLst[index];
+				_img.onload = function(){
+					index++;
+					if(index < _imgLst.length){
+						_preload(index);
+					}else{
+						aniCb(1);
+						function aniCb(index){
+							_container = _containers[index-1]
+							_els = $("[data-action]", _container);
+							setTimeout(function(){
+								$.each(_els, function(index ,item){
+									$(item).addClass($(item).data("action"));
+								})
+							}, 500)
+						}
+
+						$(".main").onePageScroll({
+							loop: false,
+							easing: 'ease',
+							animationTime: 800,
+							keyboard: false,
+							//afterMove: aniCB,
+							beforeMove: aniCb
+						});
+						_loading.addClass('f-dn');
+					}
+				}
+			}
+
+			_preload(_index);
+
 			//_container = $('.page_container')[0];
 			//$('.page-img', _container).addClass('animated bounceInRight');
 			//$('.title', _container).addClass('animated bounceInLeft');
-			aniCB(1);
 
-			function aniCB(index, next_el){
-					_container = _containers[index-1]
-					_els = $("[data-action]", _container);
-					$.each(_els, function(index ,item){
-						$(item).addClass($(item).data("action"));
-					})
-			}
-
-
-			$(".main").onePageScroll({
-				loop: false,
-				animationTime: 800,
-				afterMove: aniCB
-			});
 
 		})
 
